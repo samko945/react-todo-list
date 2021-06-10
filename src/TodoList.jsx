@@ -16,12 +16,22 @@ export default function TodoList(props) {
 		event.preventDefault();
 		event.target.querySelector(".newTodoInput").focus();
 	}
+
+	function deleteItem(id) {
+		const newItems = listItems.filter((item, index) => {
+			return index !== id;
+		});
+		setListItems(newItems);
+	}
+
 	return (
 		<div className="container">
-			<h1>{props.name}</h1>
+			<div className="heading">
+				<h1>{props.name}</h1>
+			</div>
 			<Form value={newTodoInput} updateValue={updateNewTodoInput} submitValue={submitNewTodo} />
 			{listItems.map((item, index) => {
-				return <TodoItem key={index} text={item} />;
+				return <TodoItem key={index} id={index} text={item} deleteItem={deleteItem} />;
 			})}
 		</div>
 	);
