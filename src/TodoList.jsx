@@ -3,18 +3,10 @@ import Form from "./Form";
 import TodoItem from "./TodoItem";
 
 export default function TodoList(props) {
-	const [newTodoInput, setNewTodoInput] = useState("");
-	function updateNewTodoInput(event) {
-		const newValue = event.target.value;
-		setNewTodoInput(newValue);
-	}
-
 	const [listItems, setListItems] = useState([]);
-	function submitNewTodo(event) {
-		setListItems([...listItems, newTodoInput]);
-		setNewTodoInput("");
-		event.preventDefault();
-		event.target.querySelector(".newTodoInput").focus();
+	function submitNewTodo(newTodoValue, setNewTodoValue) {
+		setListItems([...listItems, newTodoValue]);
+		setNewTodoValue("");
 	}
 
 	function deleteItem(id) {
@@ -29,7 +21,7 @@ export default function TodoList(props) {
 			<div className="heading">
 				<h1>{props.name}</h1>
 			</div>
-			<Form value={newTodoInput} updateValue={updateNewTodoInput} submitValue={submitNewTodo} />
+			<Form submitValue={submitNewTodo} />
 			{listItems.map((item, index) => {
 				return <TodoItem key={index} id={index} text={item} deleteItem={deleteItem} />;
 			})}

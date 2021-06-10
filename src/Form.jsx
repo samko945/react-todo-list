@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Form(props) {
+	const [newTodoValue, setNewTodoValue] = useState("");
+	function updateNewTodoValue(event) {
+		const newValue = event.target.value;
+		setNewTodoValue(newValue);
+	}
 	return (
-		<form onSubmit={props.submitValue} className="form">
-			<input className="newTodoInput" type="text" value={props.value} onChange={props.updateValue} />
-			<button type="submit">
+		<div className="form">
+			<input className="newTodoInput" type="text" value={newTodoValue} onChange={updateNewTodoValue} />
+			<button
+				onClick={() => {
+					props.submitValue(newTodoValue, setNewTodoValue);
+				}}
+				type="submit"
+			>
 				<span>Add</span>
 			</button>
-		</form>
+		</div>
 	);
 }
