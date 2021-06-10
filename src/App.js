@@ -5,7 +5,9 @@ import TodoList from "./TodoList";
 export default function App() {
 	return (
 		<div>
-			<h1>Welcome!</h1>
+			<div className="heading">
+				<h1>Welcome!</h1>
+			</div>
 			<TodoList name="Todo List" />
 		</div>
 	);

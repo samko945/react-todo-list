@@ -17,7 +17,7 @@ export default function TodoList(props) {
 		event.target.querySelector(".newTodoInput").focus();
 	}
 	return (
-		<div>
+		<div className="container">
 			<h1>{props.name}</h1>
 			<Form value={newTodoInput} updateValue={updateNewTodoInput} submitValue={submitNewTodo} />
 			{listItems.map((item, index) => {
