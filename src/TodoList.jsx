@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Form from "./Form";
+import TodoItem from "./TodoItem";
 
 export default function TodoList(props) {
 	const [newTodoInput, setNewTodoInput] = useState("");
@@ -19,6 +20,9 @@ export default function TodoList(props) {
 		<div>
 			<h1>{props.name}</h1>
 			<Form value={newTodoInput} updateValue={updateNewTodoInput} submitValue={submitNewTodo} />
+			{listItems.map((item, index) => {
+				return <TodoItem key={index} text={item} />;
+			})}
 		</div>
 	);
 }
