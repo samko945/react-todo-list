@@ -12,6 +12,7 @@ export default function Form(props) {
 			<button
 				onClick={() => {
 					props.submitValue(newTodoValue, setNewTodoValue);
+					setNewTodoValue("");
 				}}
 				type="submit"
 			>

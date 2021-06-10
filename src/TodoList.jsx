@@ -4,9 +4,8 @@ import TodoItem from "./TodoItem";
 
 export default function TodoList(props) {
 	const [listItems, setListItems] = useState([]);
-	function submitNewTodo(newTodoValue, setNewTodoValue) {
+	function submitNewTodo(newTodoValue) {
 		setListItems([...listItems, newTodoValue]);
-		setNewTodoValue("");
 	}
 
 	function deleteItem(id) {
